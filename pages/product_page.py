@@ -21,3 +21,9 @@ class ProductPage(BasePage):
     def message_after_adding_product_to_basket_should_contain_product_price(self, product_price):
         basket_total_price_msg = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_PRICE_MSG).text.strip()
         assert "Your basket total is now " + product_price in basket_total_price_msg, "Incorrect message after adding product to basket (product price)"
+
+    def message_about_adding_product_to_basket_is_not_presented(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_ADDED_TO_BASKET_MSG), "Success message is presented, but should not be"
+
+    def message_about_adding_product_to_basket_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.PRODUCT_ADDED_TO_BASKET_MSG), "Success message must disappear, but it didn't"
