@@ -23,7 +23,8 @@ def browser(request):
     else:
         print(f'\nError! Browser "{browser_name}" is not implemented. Choose "chrome" or "firefox".')
 
-    browser.implicitly_wait(10)
+    #browser.implicitly_wait(10)
 
     yield browser
+
     browser.quit()
